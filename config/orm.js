@@ -1,37 +1,10 @@
-// Import MySQL connection.
+
 const connection = require("../config/connection.js");
 
 
-function printQuestionMarks(num) {
-  let arr = [];
-
-  for (var i = 0; i < num; i++) {
-    arr.push("?");
-  }
-
-  return arr.toString();
-}
-
-function objToSql(ob) {
-  let arr = [];
-
-  for (var key in ob) {
-    let value = ob[key];
-    if (Object.hasOwnProperty.call(ob, key)) {
-      if (typeof value === "string" && value.indexOf(" ") >= 0) {
-        value = "'" + value + "'";
-      }
-      arr.push(key + "=" + value);
-    }
-  }
-
-  return arr.toString();
-};
-
-
 const orm = {
-  selectAll: function(tableInput, cb) {
-    var queryString = `SELECT * FROM ${table};`;
+  createAll: function(tableInput, cb) {
+    var queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -40,7 +13,17 @@ const orm = {
     });
   },
   insertOne: function(table, cols, vals, cb) {
-    var queryString = `INSERT INTO ${table}(${cols.toString()}) VALUES(${printQuestionMarks(vals.length)});`;
+    var queryString = "INSERT INTO " + table;
+
+
+    queryString += " (";
+    queryString += cols[0]+","+cols[1];
+    queryString += ") ";
+    queryString += " VALUES (";
+    queryString += "?,?";
+    queryString += ") ";
+   
+    
 
     connection.query(queryString, vals, function(err, result) {
       if (err) {
@@ -50,9 +33,15 @@ const orm = {
       cb(result);
     });
   },
-  // An example of objColVals would be {name: panther, sleepy: true}
+ 
   updateOne: function(table, objColVals, condition, cb) {
-    var queryString = `UPDATE ${table} SET ${objToSql(objColVals)} WHERE ${condition};`;
+    var queryString = "UPDATE " + table;
+
+    queryString += " SET ";
+    queryString += objToSql(objColVals);
+    queryString += " WHERE ";
+    queryString += condition;
+
     
     connection.query(queryString, function(err, result) {
       if (err) {
@@ -64,5 +53,5 @@ const orm = {
   }
 };
 
-// Export the orm object for the model (cat.js).
+
 module.exports = orm;
