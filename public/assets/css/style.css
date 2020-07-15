@@ -27,9 +27,6 @@ li {
   margin-left: 500px;
 }
 
-h1{
-  text-align: center;
-}
 
 .create-form {
   text-align: center;
@@ -45,5 +42,6 @@ h1 {
   height: 100px;
   color: antiquewhite;
   text-align: center;
+  line-height: 100px;
 }
 
