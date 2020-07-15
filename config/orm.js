@@ -4,7 +4,7 @@ const connection = require("../config/connection.js");
 
 const orm = {
   createAll: function(tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
+    let queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -13,7 +13,7 @@ const orm = {
     });
   },
   insertOne: function(table, cols, vals, cb) {
-    var queryString = "INSERT INTO " + table;
+    let queryString = "INSERT INTO " + table;
 
 
     queryString += " (";
@@ -35,10 +35,10 @@ const orm = {
   },
  
   updateOne: function(table, objColVals, condition, cb) {
-    var queryString = "UPDATE " + table;
+    let queryString = "UPDATE " + table;
 
-    queryString += " SET ";
-    queryString += objToSql(objColVals);
+    queryString += " SET devoured =";
+    queryString += "1";
     queryString += " WHERE ";
     queryString += condition;
 

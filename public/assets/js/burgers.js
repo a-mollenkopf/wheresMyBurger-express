@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $(document).on("submit", function (event) {
       event.preventDefault();
-      var newBurger = {
+      const newBurger = {
         burger_name: $("#devour").val(),
         devoured: 0,
       };
@@ -10,8 +10,21 @@ $(document).ready(function() {
         type: "POST",
         data: newBurger,
       }).then(function () {
-        console.log("Created new burger!")
         location.reload();
       });
+    });
+
+    $(".eatButton").on("click", function (event) {
+      event.preventDefault();
+      const id = this.dataset.id;
+     
+      $.ajax("/api/burgers/" + id, {
+        type: "PUT",
+        // data: devouredState
+      }).then(
+        function () {
+          location.reload();
+        }
+      );
     });
 });
