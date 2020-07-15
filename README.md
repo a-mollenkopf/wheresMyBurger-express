@@ -26,7 +26,7 @@ This project furthered my knowledge of express and express.handlebars. It helped
 [github profile] (https://github.com/a-mollenkopf/wheresMyBurger-express)
 
 
-[Employee tracker in use](https://photos.app.goo.gl/WbwtVRsap5dS3Cni6)
+[burger app in use](https://photos.app.goo.gl/WbwtVRsap5dS3Cni6)
 
 
 
