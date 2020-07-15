@@ -17,4 +17,33 @@ li {
   margin-bottom: 5px;
 }
 
+.ul2 {
+  float: right;
+  margin-right: 500px;
+}
+
+.ul1 {
+  float:left;
+  margin-left: 500px;
+}
+
+h1{
+  text-align: center;
+}
+
+.create-form {
+  text-align: center;
+  margin-top: 400px;
+}
+
+.img {
+  margin-left: 170px
+}
+
+h1 {
+  background-color: rgb(56, 50, 114);
+  height: 100px;
+  color: antiquewhite;
+  text-align: center;
+}
 
